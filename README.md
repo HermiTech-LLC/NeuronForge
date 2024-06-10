@@ -2,7 +2,7 @@
 
 Neural Network Builder is a PyQt5-based application that allows users to build, train, visualize, and save/load different types of neural networks. It supports feedforward, convolutional, and recurrent neural networks. The application provides a user-friendly interface for creating neural networks and managing their training and evaluation.
 ___
-![img](https://github.com/LoQiseaking69/neural-network-builder/blob/main/NnB%20.jpg)
+![img](https://github.com/LoQiseaking69/neural-network-builder/blob/main/NnB.jpg)
 ___
 ## Features
 

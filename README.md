@@ -11,6 +11,7 @@ ___
 - **Train Neural Networks**: Train the created neural networks using custom datasets provided via CSV files or manual input.
 - **Visualize Neural Networks**: Visualize the structure of feedforward neural networks and plot training loss over epochs.
 - **Save and Load Models**: Save trained neural network models to disk and load them for later use.
+- **TexP - Text Processing App**: A separate application for text processing, including data preprocessing, text analysis, visualization, and CSV organization.
 
 ## Installation
 
@@ -60,25 +61,32 @@ ___
 1. **Save Model**: Click on the "Save Model" button to save the trained model to a file.
 2. **Load Model**: Click on the "Load Model" button to load a previously saved model.
 
+### Using TexP - Text Processing App
+
+1. **Open TexP**: Click on the "TexP" button in the main application to open the TexP text processing app.
+2. **Data Preprocessing**: Load and process text documents.
+3. **Text Analysis**: Analyze the processed text data.
+4. **Visualization**: Visualize the processed text data.
+5. **CSV Organization**: Save the processed text data to a CSV file.
+
 ## Project Structure
 
-```
 neural_network_builder/
 │
 ├── main.py
 ├── app/
-│   ├── __init__.py
-│   ├── app.py
-│   └── styles.py
+│ ├── init.py
+│ ├── app.py
+│ └── styles.py
 ├── models/
-│   ├── __init__.py
-│   ├── feedforward.py
-│   ├── convolutional.py
-│   └── recurrent.py
+│ ├── init.py
+│ ├── feedforward.py
+│ ├── convolutional.py
+│ └── recurrent.py
 └── utils/
-    ├── __init__.py
-    └── visualization.py
-```
+├── init.py
+├── visualization.py
+└── texp_app.py
 
 ## Contributing
 

@@ -11,8 +11,10 @@ ___
 - **Train Neural Networks**: Train the created neural networks using custom datasets provided via CSV files or manual input.
 - **Visualize Neural Networks**: Visualize the structure of feedforward neural networks and plot training loss over epochs.
 - **Save and Load Models**: Save trained neural network models to disk and load them for later use.
-- **TexP - Text Processing App**: A separate application for text processing, including data preprocessing, text analysis, visualization, and CSV organization.
-
+- **TexP - Text Processing App**: A separate application for text processing, including data preprocessing, text analysis, visualization, and CSV organization
+___
+![texp](https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png)
+___https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png
 ## Installation
 
 1. **Clone the repository**:

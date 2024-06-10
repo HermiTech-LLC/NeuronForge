@@ -73,6 +73,7 @@ ___https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png
 
 ## Project Structure
 
+```bash
 neural_network_builder/
 │
 ├── main.py
@@ -89,7 +90,7 @@ neural_network_builder/
 ├── init.py
 ├── visualization.py
 └── texp_app.py
-
+```
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any bug fixes or enhancements.

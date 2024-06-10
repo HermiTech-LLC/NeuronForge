@@ -14,7 +14,7 @@ ___
 - **TexP - Text Processing App**: A separate application for text processing, including data preprocessing, text analysis, visualization, and CSV organization
 ___
 ![texp](https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png)
-___https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png
+___https://github.com/LoQiseaking69/TextProcessor
 ## Installation
 
 1. **Clone the repository**:

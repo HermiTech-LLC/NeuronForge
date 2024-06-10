@@ -4,6 +4,7 @@ from models.feedforward import FeedforwardNeuralNetwork
 from models.convolutional import ConvolutionalNeuralNetwork
 from models.recurrent import RecurrentNeuralNetwork
 from utils.visualization import visualize_network, plot_training_loss
+from utils.texp_app import TexPApp  # Import TexPApp from utils folder
 import numpy as np
 import pandas as pd
 
@@ -28,9 +29,20 @@ class App(QWidget):
         self.tabs.addTab(self.model_tab(), "Save/Load Model")
 
         layout.addWidget(self.tabs)
+
+        # Add TexP button
+        texp_button = QPushButton("TexP")
+        texp_button.clicked.connect(self.open_texp_app)
+        layout.addWidget(texp_button)
+
         self.setLayout(layout)
 
         apply_styles(self)
+
+    def open_texp_app(self):
+        self.texp_window = TexPApp()
+        self.texp_window.setGeometry(300, 200, 800, 600)  # Set the window to open smaller and centered
+        self.texp_window.show()
 
     def build_tab(self):
         tab = QWidget()

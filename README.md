@@ -13,7 +13,7 @@ Neural Network Builder is a PyQt5-based application that allows users to build, 
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/neural_network_builder.git
+    git clone https://github.com/LoQiseaking69/neural_network_builder.git
     cd neural_network_builder
     ```
 

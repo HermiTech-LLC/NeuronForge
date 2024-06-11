@@ -91,20 +91,8 @@ class App(QWidget):
         tab = QWidget()
         layout = QVBoxLayout()
 
-        input_layout = QHBoxLayout()
-        input_layout.addWidget(QLabel("Input (comma-separated):"))
-        self.input_entry = QLineEdit()
-        input_layout.addWidget(self.input_entry)
-        layout.addLayout(input_layout)
-
-        output_layout = QHBoxLayout()
-        output_layout.addWidget(QLabel("Expected Output (comma-separated):"))
-        self.output_entry = QLineEdit()
-        output_layout.addWidget(self.output_entry)
-        layout.addLayout(output_layout)
-
         api_key_layout = QHBoxLayout()
-        api_key_layout.addWidget(QLabel("Omniverse API Key:"))
+        api_key_layout.addWidget(QLabel("Omniverse API Key (only for Recurrent NN):"))
         self.api_key_entry = QLineEdit()
         api_key_layout.addWidget(self.api_key_entry)
         layout.addLayout(api_key_layout)
@@ -199,26 +187,26 @@ class App(QWidget):
                 inputs = self.inputs
                 targets = self.targets
             else:
-                inputs = np.array([float(i) for i in self.input_entry.text().split(",")])
-                targets = np.array([float(i) for i in self.output_entry.text().split(",")])
-                model_type = self.model_type_combo.currentText()
-            
-                if model_type == "Convolutional":
-                    input_dim = int(np.sqrt(inputs.size))
-                    if input_dim * input_dim != inputs.size:
-                        raise ValueError("Input size must be a perfect square for Convolutional Neural Network")
-                    inputs = inputs.reshape((input_dim, input_dim))
-                    targets = targets.reshape(1, -1)
-                elif model_type == "Recurrent":
-                    inputs = inputs.reshape(1, -1)
-                    targets = targets.reshape(1, -1)
-                else:
-                    if inputs.shape[0] != int(self.input_layer_combo.currentText()) or targets.shape[0] != int(self.output_layer_combo.currentText()):
-                        raise ValueError("Input/Output size mismatch")
-                    inputs = inputs.reshape(1, -1)
-                    targets = targets.reshape(1, -1)
-            
-            loss_history = self.nn.train(inputs, targets)
+                raise ValueError("Please upload a CSV file with inputs and targets")
+
+            model_type = self.model_type_combo.currentText()
+
+            if model_type == "Feedforward":
+                loss_history = self.nn.train(inputs, targets)
+            elif model_type == "Convolutional":
+                input_dim = int(np.sqrt(inputs.size))
+                if input_dim * input_dim != inputs.size:
+                    raise ValueError("Input size must be a perfect square for Convolutional Neural Network")
+                inputs = inputs.reshape((input_dim, input_dim))
+                targets = targets.reshape(1, -1)
+                loss_history = self.nn.train(inputs, targets)
+            elif model_type == "Recurrent":
+                inputs = inputs.reshape(1, -1)
+                targets = targets.reshape(1, -1)
+                if not omniverse_api_key:
+                    raise ValueError("Omniverse API key is required for training Recurrent Neural Network")
+                loss_history = self.nn.train(inputs, targets)
+
             plot_training_loss(loss_history)
             QMessageBox.information(self, "Success", "Neural Network Trained Successfully")
         except ValueError as e:

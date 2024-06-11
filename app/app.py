@@ -7,6 +7,7 @@ from utils.visualization import visualize_network, plot_training_loss
 from utils.texp_app import TexPApp  # Import TexPApp from utils folder
 import numpy as np
 import pandas as pd
+import os
 
 class App(QWidget):
     def __init__(self):
@@ -102,6 +103,12 @@ class App(QWidget):
         output_layout.addWidget(self.output_entry)
         layout.addLayout(output_layout)
 
+        api_key_layout = QHBoxLayout()
+        api_key_layout.addWidget(QLabel("Omniverse API Key:"))
+        self.api_key_entry = QLineEdit()
+        api_key_layout.addWidget(self.api_key_entry)
+        layout.addLayout(api_key_layout)
+
         self.upload_button = QPushButton("Upload CSV File")
         self.upload_button.clicked.connect(self.upload_file)
         layout.addWidget(self.upload_button)
@@ -185,6 +192,9 @@ class App(QWidget):
 
     def train_nn(self):
         try:
+            omniverse_api_key = self.api_key_entry.text()
+            os.environ['OMNIVERSE_API_KEY'] = omniverse_api_key
+
             if hasattr(self, 'inputs') and hasattr(self, 'targets'):
                 inputs = self.inputs
                 targets = self.targets

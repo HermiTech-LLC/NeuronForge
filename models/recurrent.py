@@ -29,7 +29,12 @@ class RecurrentNeuralNetwork:
         omniverse_api_key = os.getenv('OMNIVERSE_API_KEY')
         if not omniverse_api_key:
             raise ValueError("Omniverse API key not found. Please set the API key.")
-        
+
+        # Ask for the Omniverse API URL
+        api_url = input("Please enter the Omniverse API URL: ")
+        if not api_url:
+            raise ValueError("Omniverse API URL is required.")
+
         # Use the Omniverse API key in your training process
         data = {
             'inputs': inputs.tolist(),
@@ -37,9 +42,6 @@ class RecurrentNeuralNetwork:
             'learning_rate': learning_rate,
             'epochs': epochs
         }
-        
-        # Example API endpoint for training (replace with the actual endpoint)
-        api_url = 'https://omniverse-api-url/train'
         
         # Send a POST request to the Omniverse API
         response = requests.post(api_url, json=data, headers={'Authorization': f'Bearer {omniverse_api_key}'})

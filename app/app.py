@@ -213,10 +213,7 @@ class App(QWidget):
             QMessageBox.critical(self, "Error", str(e))
 
     def visualize_network(self):
-        if isinstance(self.nn, FeedforwardNeuralNetwork):
-            visualize_network(self.nn)
-        else:
-            QMessageBox.warning(self, "Warning", "Visualization is only available for Feedforward Neural Network")
+        visualize_network(self.nn)
 
     def plot_training_loss(self, loss_history=None):
         if loss_history is None:

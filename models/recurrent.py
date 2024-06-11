@@ -1,4 +1,6 @@
 import numpy as np
+import os
+import requests
 
 class RecurrentNeuralNetwork:
     def __init__(self, input_size, output_size, hidden_size=64):
@@ -24,22 +26,30 @@ class RecurrentNeuralNetwork:
         return e_x / e_x.sum(axis=1, keepdims=True)
 
     def train(self, inputs, targets, learning_rate=0.1, epochs=100):
-        for epoch in range(epochs):
-            for input_data, target in zip(inputs, targets):
-                self.previous_hidden_state = np.zeros((input_data.shape[0], self.hidden_size))
-                output = self.forward(input_data)
-                error = target - output
-                d_wy = np.dot(self.hidden_state.T, error)
-                d_by = np.sum(error, axis=0)
-                delta_h = np.dot(error, self.wy.T) * (1 - self.hidden_state**2)
-                d_wh = np.dot(self.previous_hidden_state.T, delta_h)
-                d_wx = np.dot(input_data.T, delta_h)
-                d_bh = np.sum(delta_h, axis=0)
-                self.wy += learning_rate * d_wy
-                self.by += learning_rate * d_by
-                self.wh += learning_rate * d_wh
-                self.wx += learning_rate * d_wx
-                self.bh += learning_rate * d_bh
+        omniverse_api_key = os.getenv('OMNIVERSE_API_KEY')
+        if not omniverse_api_key:
+            raise ValueError("Omniverse API key not found. Please set the API key.")
+        
+        # Use the Omniverse API key in your training process
+        data = {
+            'inputs': inputs.tolist(),
+            'targets': targets.tolist(),
+            'learning_rate': learning_rate,
+            'epochs': epochs
+        }
+        
+        # Example API endpoint for training (replace with the actual endpoint)
+        api_url = 'https://omniverse-api-url/train'
+        
+        # Send a POST request to the Omniverse API
+        response = requests.post(api_url, json=data, headers={'Authorization': f'Bearer {omniverse_api_key}'})
+        
+        if response.status_code != 200:
+            raise ValueError(f"Training failed: {response.text}")
+        
+        # Assume the API returns the training loss history
+        loss_history = response.json().get('loss_history', [])
+        return loss_history
 
     def save_model(self, file_path):
         model_data = {'wx': self.wx, 'wh': self.wh, 'wy': self.wy, 'bh': self.bh, 'by': self.by}

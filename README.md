@@ -95,7 +95,6 @@ neural_network_builder/
     ├── __init__.py
     ├── visualization.py
     └── texp_app.py
-
 ```
 ## Enhancements and Updates
 
@@ -108,14 +107,16 @@ neural_network_builder/
 ### Model Improvements
 
 - **Feedforward Neural Network**:
-    - Optimized weight initialization techniques.
-    - Enhanced training with efficient backpropagation and gradient descent algorithms.
+  - Optimized weight initialization techniques.
+  - Enhanced training with efficient backpropagation and gradient descent algorithms.
 - **Convolutional Neural Network**:
-    - Integrated He initialization for convolutional filters.
-    - Refined training processes for more accurate gradient updates.
+  - Integrated He initialization for convolutional filters.
+  - Refined training processes for more accurate gradient updates.
 - **Recurrent Neural Network**:
-    - Leveraged Omniverse API for superior training.
-    - Streamlined training process with advanced gradient descent and error management.
+  - Leveraged Omniverse API for superior training.
+  - Streamlined training process with advanced gradient descent and error management.
+  - Improved hidden state initialization and softmax function.
+  - Implemented layer normalization, gradient clipping, and Adam optimizer for better performance.
 
 ## Contributing
 

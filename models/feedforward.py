@@ -5,9 +5,14 @@ class FeedforwardNeuralNetwork:
         self.layers = layers
         self.weights = []
         self.biases = []
-        for i in range(len(layers) - 1):
-            self.weights.append(np.random.randn(layers[i], layers[i + 1]))
-            self.biases.append(np.random.randn(layers[i + 1]))
+        self._initialize_parameters()
+
+    def _initialize_parameters(self):
+        for i in range(len(self.layers) - 1):
+            weight = np.random.randn(self.layers[i], self.layers[i + 1]) * np.sqrt(2 / self.layers[i])
+            bias = np.zeros(self.layers[i + 1])
+            self.weights.append(weight)
+            self.biases.append(bias)
 
     def forward(self, inputs):
         self.a = [inputs]
@@ -30,15 +35,19 @@ class FeedforwardNeuralNetwork:
             output = self.forward(inputs)
             loss = np.mean((targets - output) ** 2)
             loss_history.append(loss)
+
+            # Backpropagation
             deltas = [None] * len(self.weights)
             deltas[-1] = (targets - output) * self.sigmoid_derivative(output)
 
             for i in range(len(deltas) - 2, -1, -1):
                 deltas[i] = deltas[i + 1].dot(self.weights[i + 1].T) * self.sigmoid_derivative(self.a[i + 1])
 
+            # Gradient descent update
             for i in range(len(self.weights)):
                 self.weights[i] += self.a[i].T.dot(deltas[i]) * learning_rate
                 self.biases[i] += np.sum(deltas[i], axis=0) * learning_rate
+
         self.loss_history = loss_history
         return loss_history
 

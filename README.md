@@ -4,14 +4,14 @@
 Neural Network Builder is a comprehensive PyQt5-based application designed for constructing, training, visualizing, and managing various types of neural networks. This tool supports feedforward, convolutional, and recurrent neural networks, seamlessly integrating with the Omniverse API to enhance the training process for recurrent models. With a user-friendly interface, this application simplifies the complex processes involved in neural network development and evaluation.
 ___
 [![nn_builderVid](https://img.youtube.com/vi/GxW3TsPEaGA/0.jpg)](https://www.youtube.com/watch?v=GxW3TsPEaGA)
-___
-## Key Features
+___## Key Features
 
 - **Neural Network Construction**: Effortlessly create feedforward, convolutional, or recurrent neural networks with customizable layer configurations.
 - **Training Capabilities**: Train your neural networks using custom datasets from CSV files. Recurrent networks benefit from enhanced training capabilities through Omniverse API integration.
 - **Visualization Tools**: Gain insights into your neural network structures and monitor training progress with detailed loss plots.
 - **Model Management**: Save and load neural network models to/from disk, facilitating easy reuse and deployment.
 - **TexP - Text Processing Application**: A dedicated tool for text data preprocessing, analysis, visualization, and CSV management.
+- **API Integration**: Expose the functionality of the application via a FastAPI-based REST API for remote access and integration.
 ___
 ![texp](https://github.com/LoQiseaking69/neural-network-builder/blob/main/builder.png)
 ___

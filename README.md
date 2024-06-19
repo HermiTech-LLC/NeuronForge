@@ -107,16 +107,21 @@ neural_network_builder/
 ### Model Improvements
 
 - **Feedforward Neural Network**:
-  - Optimized weight initialization techniques.
-  - Enhanced training with efficient backpropagation and gradient descent algorithms.
+    - Optimized weight initialization techniques.
+    - Enhanced training with efficient backpropagation and gradient descent algorithms.
 - **Convolutional Neural Network**:
-  - Integrated He initialization for convolutional filters.
-  - Refined training processes for more accurate gradient updates.
+    - Integrated He initialization for convolutional filters.
+    - Refined training processes for more accurate gradient updates.
 - **Recurrent Neural Network**:
-  - Leveraged Omniverse API for superior training.
-  - Streamlined training process with advanced gradient descent and error management.
-  - Improved hidden state initialization and softmax function.
-  - Implemented layer normalization, gradient clipping, and Adam optimizer for better performance.
+    - Leveraged Omniverse API for superior training.
+    - Streamlined training process with advanced gradient descent and error management.
+
+### API Integration
+
+- **Create and Train Models**: Expose endpoints to create and train neural network models via FastAPI.
+- **Model Management**: Endpoints to save, load, and list models.
+- **Visualization and Monitoring**: Endpoints to visualize network architecture and plot training loss.
+
 
 ## Contributing
 

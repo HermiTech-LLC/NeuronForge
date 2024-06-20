@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security.api_key import APIKeyHeader
-from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
+from pydantic import BaseModel, Field, ConfigDict
+from typing import List, Optional, Dict, Any, Literal
 import uuid
 import numpy as np
 from models.feedforward import FeedforwardNeuralNetwork
@@ -25,34 +25,46 @@ def get_api_key(api_key_header: str = Depends(api_key_header)):
             status_code=status.HTTP_403_FORBIDDEN, detail="Could not validate credentials"
         )
 
-class ModelType(str):
-    feedforward = "Feedforward"
-    convolutional = "Convolutional"
-    recurrent = "Recurrent"
+ModelType = Literal["Feedforward", "Convolutional", "Recurrent"]
 
 class CreateModelRequest(BaseModel):
-    model_type: ModelType
+    model_type: ModelType = Field(...)
     layers: Optional[List[int]] = None  # For Feedforward
     input_size: Optional[int] = None    # For Recurrent
     output_size: Optional[int] = None   # For Recurrent
 
+    class Config:
+        protected_namespaces = ()
+
 class TrainModelRequest(BaseModel):
-    model_id: str
+    model_id: str = Field(...)
     inputs: List[List[float]]
     targets: List[List[float]]
     learning_rate: float = 0.1
     epochs: int = 100
 
+    class Config:
+        protected_namespaces = ()
+
 class ModelResponse(BaseModel):
-    model_id: str
+    model_id: str = Field(...)
     model_type: ModelType
+
+    class Config:
+        protected_namespaces = ()
 
 class TrainingResponse(BaseModel):
     loss_history: List[float]
 
+    class Config:
+        protected_namespaces = ()
+
 class SaveLoadModelRequest(BaseModel):
-    model_id: str
+    model_id: str = Field(...)
     file_path: str
+
+    class Config:
+        protected_namespaces = ()
 
 # In-memory database
 models: Dict[str, Any] = {}
@@ -60,11 +72,11 @@ models: Dict[str, Any] = {}
 @app.post("/models/", response_model=ModelResponse, dependencies=[Depends(get_api_key)])
 def create_model(request: CreateModelRequest):
     model_id = str(uuid.uuid4())
-    if request.model_type == ModelType.feedforward:
+    if request.model_type == "Feedforward":
         model = FeedforwardNeuralNetwork(request.layers)
-    elif request.model_type == ModelType.convolutional:
+    elif request.model_type == "Convolutional":
         model = ConvolutionalNeuralNetwork()
-    elif request.model_type == ModelType.recurrent:
+    elif request.model_type == "Recurrent":
         if not request.input_size or not request.output_size:
             raise HTTPException(status_code=400, detail="Input and output sizes are required for recurrent models")
         model = RecurrentNeuralNetwork(request.input_size, request.output_size)
@@ -117,13 +129,13 @@ def load_model(request: SaveLoadModelRequest):
     # Assuming the model type is part of the file name for simplicity
     model_type = None
     if "feedforward" in request.file_path:
-        model_type = ModelType.feedforward
+        model_type = "Feedforward"
         model = FeedforwardNeuralNetwork([1, 1, 1])  # Placeholder sizes
     elif "convolutional" in request.file_path:
-        model_type = ModelType.convolutional
+        model_type = "Convolutional"
         model = ConvolutionalNeuralNetwork()
     elif "recurrent" in request.file_path:
-        model_type = ModelType.recurrent
+        model_type = "Recurrent"
         model = RecurrentNeuralNetwork(1, 1)  # Placeholder sizes
     
     if not model_type:
@@ -154,7 +166,3 @@ def plot_loss(model_id: str):
         return {"detail": "Training loss plot created"}
     else:
         raise HTTPException(status_code=400, detail="No training loss history available")
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)

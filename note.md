@@ -26,10 +26,10 @@ To enhance the `nn-Builder` GUI by adding a new tab for API key management. This
 - **Access Control**: Ensure that API keys are tied to user accounts with appropriate access controls to prevent unauthorized use.
 
 ## Implementation Timeline
-- **Phase 1**: Backend logic for API key generation and management (2 weeks).
-- **Phase 2**: Frontend implementation of the API Key Management tab (1 week).
-- **Phase 3**: Integration testing and security audits (1 week).
-- **Phase 4**: Deployment and user documentation (1 week).
+- **Phase 1**: Backend logic for API key generation and management.
+- **Phase 2**: Frontend implementation of the API Key Management tab.
+- **Phase 3**: Integration testing and security audits.
+- **Phase 4**: Deployment and user documentation.
 
 ## Conclusion
 Integrating an API Key Management tab will significantly enhance user experience by providing essential tools for secure and controlled access to the neural network API, facilitating broader use cases and external integrations.

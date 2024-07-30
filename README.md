@@ -29,7 +29,7 @@ https://github.com/LoQiseaking69/TextProcessor
 
 2. **Set Up a Virtual Environment** (recommended):
     ```sh
-    python -m venv .venv
+    python3 -m venv .venv
     source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
     ```
 
@@ -40,7 +40,7 @@ https://github.com/LoQiseaking69/TextProcessor
 
 4. **Launch the Application**:
     ```sh
-    python main.py
+    python3 main.py
     ```
 
 ## Usage Instructions

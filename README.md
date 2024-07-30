@@ -29,8 +29,8 @@ https://github.com/LoQiseaking69/TextProcessor
 
 2. **Set Up a Virtual Environment** (recommended):
     ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    python -m venv .venv
+    source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
     ```
 
 3. **Install Dependencies**:

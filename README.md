@@ -23,8 +23,8 @@ https://github.com/LoQiseaking69/TextProcessor
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/LoQiseaking69/neural_network_builder.git
-    cd neural_network_builder
+    git clone https://github.com/LoQiseaking69/nn-Builder.git
+    cd nn-Builder
     ```
 
 2. **Set Up a Virtual Environment** (recommended):

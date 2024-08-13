@@ -1,7 +1,7 @@
-# NeuroForge -Neural Network Builder
+# NeuronForge -Neural Network Builder
 ![nn.jpeg](https://github.com/LoQiseaking69/neural-network-builder/blob/main/Nn.png)
 
-NeuroForge is a comprehensive PyQt5-based application designed for constructing, training, visualizing, and managing various types of neural networks. This tool supports feedforward, convolutional, and recurrent neural networks, seamlessly integrating with the Omniverse API to enhance the training process for recurrent models. With a user-friendly interface, this application simplifies the complex processes involved in neural network development and evaluation.
+NeuronForge is a comprehensive PyQt5-based application designed for constructing, training, visualizing, and managing various types of neural networks. This tool supports feedforward, convolutional, and recurrent neural networks, seamlessly integrating with the Omniverse API to enhance the training process for recurrent models. With a user-friendly interface, this application simplifies the complex processes involved in neural network development and evaluation.
 ___
 [![nn_builderVid](https://img.youtube.com/vi/GxW3TsPEaGA/0.jpg)](https://www.youtube.com/watch?v=GxW3TsPEaGA)
 ___
@@ -81,7 +81,7 @@ https://github.com/LoQiseaking69/TextProcessor
 ## Project Structure
 
 ```bash
-NeuroForge/
+NeuronForge/
 │
 ├── main.py
 ├── api.py

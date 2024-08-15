@@ -43,22 +43,23 @@ https://github.com/LoQiseaking69/TextProcessor
     python3 main.py
     ```
 
-## Usage Instructions
+> IMPORTANT
+> ## Usage Instructions
+>
+> ### Constructing a Neural Network
 
-### Constructing a Neural Network
+> 1. **Select Model Type**: Choose from Feedforward, Convolutional, or Recurrent neural networks.
+> 2. **Configure Layer Sizes**: Specify sizes for input, hidden, and output layers.
+> 3. **Build the Network**: Click the "Build Neural Network" button to initialize the network.
 
-1. **Select Model Type**: Choose from Feedforward, Convolutional, or Recurrent neural networks.
-2. **Configure Layer Sizes**: Specify sizes for input, hidden, and output layers.
-3. **Build the Network**: Click the "Build Neural Network" button to initialize the network.
+ ### Training a Neural Network
 
-### Training a Neural Network
+ 1. **Upload CSV File**: Use the "Upload CSV File" button to upload your dataset. Ensure the CSV file has input features in columns and target values in the last column.
+ 2. **Train the Network**: Click the "Train Neural Network" button to start the training process. The application will display the training loss as it progresses.
 
-1. **Upload CSV File**: Use the "Upload CSV File" button to upload your dataset. Ensure the CSV file has input features in columns and target values in the last column.
-2. **Train the Network**: Click the "Train Neural Network" button to start the training process. The application will display the training loss as it progresses.
-
-    - **Feedforward Networks**: Standard training using the specified layer structure.
-    - **Convolutional Networks**: Ensure the input size forms a perfect square for proper reshaping.
-    - **Recurrent Networks**: Requires an Omniverse API key for training. Enter the API key in the designated field before training.
+   - **Feedforward Networks**: Standard training using the specified layer structure.
+   - **Convolutional Networks**: Ensure the input size forms a perfect square for proper reshaping.
+   - **Recurrent Networks**: Requires an Omniverse API key for training. Enter the API key in the designated field before training.
 
 ### Visualizing the Neural Network
 

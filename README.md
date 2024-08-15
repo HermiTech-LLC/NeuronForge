@@ -43,7 +43,7 @@ https://github.com/LoQiseaking69/TextProcessor
     python3 main.py
     ```
 
-> IMPORTANT
+
 > ## Usage Instructions
 >
 > ### Constructing a Neural Network
